@@ -67,4 +67,5 @@ Shannon<- ggplot(data,aes(x=group,y=Shannon))+
         legend.position ="none")+ylab(NULL)+
   facet_grid(.~"Shannon")
 Shannon
+# Note:When drawing Simpson, replace "Shannon" with Simpson.
 
