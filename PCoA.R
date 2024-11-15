@@ -1,5 +1,5 @@
 rm(list=ls())#clear Global Environment
-setwd('')
+setwd('C:/Users/user/Desktop/α-diversity/Potato-BOLD')
 
 
 # install.packages("vegan")
