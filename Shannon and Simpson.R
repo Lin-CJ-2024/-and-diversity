@@ -1,6 +1,4 @@
-
-
-setwd("") 
+setwd("C:/Users/user/Desktop/α-diversity/Potato-BOLD") 
 rm(list = ls())
 
 
@@ -17,7 +15,7 @@ group <- read.delim("group.txt",header = T)
 
 
 
-Shannon <- diversity(genus, index = "shannon", MARGIN = 2, base = exp(1))   #MARGIN：1用列数据算，2用行数据算
+Shannon <- diversity(genus, index = "shannon", MARGIN = 2, base = exp(1))   
 
 Simpson <- diversity(genus, index = "simpson", MARGIN = 2, base = exp(1))
 
@@ -36,7 +34,7 @@ index$Ace <- obs_chao_ace[,4]
 index$obs <- obs_chao_ace[,1]
 
 
-index$Pielou <- Shannon / log(Richness) 
+index$Pielou <- Shannon / log(Richness)
 
 
 index$sample<- c(rownames(index))
@@ -51,8 +49,8 @@ write.csv(data,"5-alpha data.csv")
 shapiro.test(Shannon)
 
 Shannon<- ggplot(data,aes(x=group,y=Shannon))+  
-  stat_boxplot(geom = "errorbar", linewidth=0.2)+ 
-  geom_boxplot(aes(fill=group),linewidth=0.2)+ 
+  stat_boxplot(geom = "errorbar", linewidth=0.2)+  
+  geom_boxplot(aes(fill=group),linewidth=0.2)+  
   scale_fill_manual(values =c("#34bf49","#ff4c4c","#0099e5","#FFB90F","#9370DB"))+
   #stat_compare_means(method = "kruskal.test", label.y = 2,label.x = 0.7,label = "p.signif") +
   stat_compare_means(comparisons=list(c("M1", "M2"), c("M1", "M3"), c("M1", "M4"), c("M1", "M5"), c("M2", "M3"), c("M2", "M4"),
@@ -67,5 +65,6 @@ Shannon<- ggplot(data,aes(x=group,y=Shannon))+
         legend.position ="none")+ylab(NULL)+
   facet_grid(.~"Shannon")
 Shannon
+
 # Note:When drawing Simpson, replace "Shannon" with Simpson.
 
