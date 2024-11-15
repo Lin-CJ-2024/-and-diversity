@@ -9,7 +9,7 @@ library(vegan)
 library(ggplot2)
 
 
-otu_raw <- read.table(file="data/otu.txt",sep="\t",header=T,check.names=FALSE ,row.names=1)
+otu_raw <- read.table(file="otu.txt",sep="\t",header=T,check.names=FALSE ,row.names=1)
 
 otu <- t(otu_raw)
 
@@ -19,7 +19,7 @@ otu.distance <- vegdist(otu)
 
 
 otu.distance1 <- as.matrix(round(otu.distance,digits = 3))
-write.table(otu.distance1,'output_data/matrix_bray_curtis.txt', row.names = T, sep = '\t', quote = F)
+write.table(otu.distance1,'matrix_bray_curtis.txt', row.names = T, sep = '\t', quote = F)
 
 pcoa <- cmdscale (otu.distance,eig=TRUE)
 pc12 <- pcoa$points[,1:2]
@@ -39,7 +39,7 @@ p <- ggplot(pc12,aes(x=V1, y=V2))+
 p
 
 
-group <- read.table("data/group.txt", sep='\t', header=T)
+group <- read.table("group.txt", sep='\t', header=T)
 
 colnames(group) <- c("samples","group")
 
