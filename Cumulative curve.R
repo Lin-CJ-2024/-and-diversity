@@ -1,5 +1,5 @@
 
-setwd("") 
+setwd("C:/Users/user/Desktop/α-diversity/Potato-BOLD") 
 rm(list = ls())
 library(vegan)
 
